@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 
 const websiteSchema = new mongoose.Schema(
   {
-    favicon: { type: String, required: false },
+    img: { type: String, required: false },
     projectName: { type: String, required: false },
     html: { type: String, required: false },
     css: { type: String, required: false },
     javascript: { type: String, required: false },
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'userStartUrWeb' },
+    createdBy: [
+      { type: mongoose.Schema.Types.ObjectId, ref: 'userStartUrWeb' },
+    ],
   },
   { timestamps: true, collection: 'webSiteStartUrWeb' }
 );

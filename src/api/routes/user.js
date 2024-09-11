@@ -1,11 +1,11 @@
-const { isAdmin, isUser } = require('../../middlewares/auth');
+const { isAdmin } = require('../../middlewares/auth');
 
 const {
   registerUser,
   loginUser,
   deleteUser,
   getUser,
-  getUserByID,
+  updateUser,
 } = require('../controllers/user');
 
 const userRoutes = require('express').Router();
@@ -13,7 +13,7 @@ const userRoutes = require('express').Router();
 userRoutes.post('/register', registerUser);
 userRoutes.post('/login', loginUser);
 userRoutes.get('/', getUser);
-userRoutes.get('/:id', getUserByID);
-userRoutes.delete('/:id', [isAdmin], [isUser], deleteUser);
+userRoutes.put('/:id', updateUser);
+userRoutes.delete('/:id', [isAdmin], deleteUser);
 
 module.exports = userRoutes;

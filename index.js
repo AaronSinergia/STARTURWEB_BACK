@@ -3,6 +3,7 @@ const express = require('express');
 const { connectDB } = require('./src/config/db');
 const cors = require('cors');
 const cloudinary = require('cloudinary').v2;
+const bodyParser = require('body-parser');
 
 const userRoutes = require('./src/api/routes/user');
 const websiteRoutes = require('./src/api/routes/website');
@@ -10,6 +11,8 @@ const categoryRoutes = require('./src/api/routes/category');
 
 const app = express();
 connectDB();
+
+app.use(bodyParser.json());
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,

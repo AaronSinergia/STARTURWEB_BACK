@@ -37,7 +37,7 @@ mongoose
 
         websitesDocuments.push(
           new WebSite({
-            favicon: row.favicon,
+            img: row.img,
             projectName: row.projectName,
             html: row.html,
             css: row.css,

@@ -5,7 +5,10 @@ const categorySchema = new mongoose.Schema(
     name: { type: String, required: false },
     description: { type: String, required: false },
     websites: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'webSiteStartUrWeb' },
+      {
+        id: { type: mongoose.Schema.Types.ObjectId, ref: 'WebSite' },
+        projectName: String,
+      },
     ],
   },
   { timestamps: true, collection: 'categoryStartUrWeb' }
