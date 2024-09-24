@@ -38,8 +38,6 @@ STARTURWEB BACKEND DATABASE DOCUMENTATION (ENGLISH)
 
 (If you want to test with an Admin user, you can easily log in with the following credentials:
 
-json
-Copiar código
 {
 "userName": "AaronSinergia",
 "password": "AaronSinergia123"

@@ -4,9 +4,9 @@ const websiteSchema = new mongoose.Schema(
   {
     img: { type: String, required: false },
     projectName: { type: String, required: false },
-    html: { type: String, required: false },
-    css: { type: String, required: false },
-    javascript: { type: String, required: false },
+    header: { type: String, required: false },
+    body: { type: String, required: false },
+    footer: { type: String, required: false },
     createdBy: [
       { type: mongoose.Schema.Types.ObjectId, ref: 'userStartUrWeb' },
     ],
