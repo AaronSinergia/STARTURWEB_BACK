@@ -1,5 +1,6 @@
 const { deleteFile } = require('../../utils/deleteFile');
 const WebSite = require('../models/website');
+const mongoose = require('mongoose');
 
 const getWebSites = async (req, res, next) => {
   const { id } = req.params;
@@ -104,16 +105,23 @@ const deleteWebsite = async (req, res, next) => {
 
 const getWebSiteBycreatedBy = async (req, res, next) => {
   try {
-    const { id, createdBy } = req.params;
+    const createdBy = req.params;
+    const userId = new mongoose.Types.ObjectId(createdBy);
 
-    const website = await WebSite.findOne({
-      _id: id,
-      createdBy: createdBy,
+    const websites = await WebSite.find({
+      createdBy: userId,
     });
+    console.log(userId);
 
-    return res.status(200).json({ isUserWebSite: !!website });
+    if (websites.length > 0) {
+      return res.status(200).json({ websites });
+    } else {
+      return res
+        .status(404)
+        .json({ message: 'No se encontraron sitios web para este usuario.' });
+    }
   } catch (error) {
-    return res.status(400).json(error.message);
+    return res.status(400).json({ error: error.message });
   }
 };
 
