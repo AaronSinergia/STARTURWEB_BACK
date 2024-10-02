@@ -37,6 +37,39 @@ const getCategoryById = async (req, res, next) => {
   }
 };
 
+const populateWebsite = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { websites } = req.body;
+
+    const currentCategory = await Category.findOne({
+      websites: { $in: [websites] },
+    });
+
+    if (currentCategory) {
+      if (currentCategory._id.toString() !== id) {
+        await Category.findByIdAndUpdate(
+          currentCategory._id,
+          { $pull: { websites: websites } },
+          { new: true }
+        );
+      } else {
+        return alert('La web ya está asociada a esta categoría');
+      }
+    }
+
+    const websitePopulated = await Category.findByIdAndUpdate(
+      id,
+      { $push: { websites: websites } },
+      { new: true }
+    );
+
+    return res.status(200).json(websitePopulated);
+  } catch (error) {
+    return res.status(400).json('Ha fallado la petición');
+  }
+};
+
 const updateCategory = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -89,6 +122,7 @@ module.exports = {
   createCategory,
   getCategories,
   getCategoryById,
+  populateWebsite,
   updateCategory,
   deleteCategory,
 };

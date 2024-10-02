@@ -5,6 +5,7 @@ const {
   createCategory,
   getCategories,
   getCategoryById,
+  populateWebsite,
   updateCategory,
   deleteCategory,
 } = require('../controllers/category');
@@ -14,6 +15,7 @@ const categoryRoutes = require('express').Router();
 categoryRoutes.post('/', createCategory);
 categoryRoutes.get('/', getCategories);
 categoryRoutes.get('/:id', getCategoryById);
+categoryRoutes.put('/populateWebsite/:id', populateWebsite);
 categoryRoutes.put(
   '/:id',
   uploadCategories.single('img'),
