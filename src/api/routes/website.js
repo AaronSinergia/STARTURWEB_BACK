@@ -1,4 +1,4 @@
-const { isAdmin, isUser } = require('../../middlewares/auth');
+const { isUser } = require('../../middlewares/auth');
 const { uploadWebsites } = require('../../middlewares/file');
 
 const {
@@ -22,6 +22,7 @@ websiteRoutes.put(
   [isUser],
   modifyWebSite
 );
-websiteRoutes.delete('/', [isAdmin], [isUser], deleteWebsite);
+websiteRoutes.delete('/:id', deleteWebsite);
+// websiteRoutes.delete('/:id', [isUser], deleteWebsite);
 
 module.exports = websiteRoutes;
