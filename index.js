@@ -12,6 +12,12 @@ const categoryRoutes = require('./src/api/routes/category');
 const app = express();
 connectDB();
 
+app.use(
+  cors({
+    origin: 'https://starturweb-back.onrender.com',
+  })
+);
+
 app.use(bodyParser.json());
 
 cloudinary.config({
