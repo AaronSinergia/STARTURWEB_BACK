@@ -13,11 +13,12 @@ const app = express();
 connectDB();
 
 // app.use(cors());
-app.use(
-  cors({
-    origin: '*',
-  })
-);
+const corsOptions = {
+  origin: 'https://starturweb.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+};
+
+app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 
