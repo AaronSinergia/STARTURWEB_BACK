@@ -12,6 +12,7 @@ const categoryRoutes = require('./src/api/routes/category');
 const app = express();
 connectDB();
 
+// app.use(cors());
 app.use(
   cors({
     origin: '*',
@@ -25,8 +26,6 @@ cloudinary.config({
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
 });
-
-app.use(cors());
 
 app.use(express.json());
 
