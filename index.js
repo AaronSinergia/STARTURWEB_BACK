@@ -14,7 +14,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: 'https://starturweb-back.onrender.com',
+    origin: 'https://starturweb-back.onrender.com/api',
   })
 );
 
