@@ -14,7 +14,7 @@ connectDB();
 
 // app.use(cors());
 const corsOptions = {
-  origin: 'https://starturweb.netlify.app',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 
