@@ -7,7 +7,6 @@ const registerUser = async (req, res, next) => {
     const newUser = new User({
       username: req.body.username,
       password: req.body.password,
-      isAdmin: req.body.isAdmin,
     });
 
     const userDuplicate = await User.findOne({
